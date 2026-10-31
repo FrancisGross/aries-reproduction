@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local environments and secrets
+.venv/
+.env
+
+# Large model files
+*.pt
+*.pth
+*.safetensors
+
+# Temporary files
+tmp/
