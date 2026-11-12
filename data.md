@@ -2,7 +2,7 @@
 
 This work evaluates ARIES on BAliBASE 3.0 dataset as reported in the paper. BAliBASE is a curated benchmark dataset for evaluation of MSA (Multi Sequence Alignment) algorithm. It provides structurally derived reference alignments of protein sequences. The dataset is organized into six reference versions (RV11, RV12, RV20, RV30, RV40, RV50). RV11 is a subset of lowest sequence identity ("twilight zone"). This subset is of high interest for this reproduction work.
 
-The dataset is available on the ARIES github repository: [BAliBASE_dataset](https://github.com/Singh-Lab/ARIES/tree/main/datasets/BAliBASE)
+The dataset is available on the ARIES github repository: [BAliBASE dataset](https://github.com/Singh-Lab/ARIES/tree/main/datasets/BAliBASE)
 
 There are input data for computing the ARIES algorithm, reference data for evaluation and calculating scores and xml data with core blocks for special scoring.
 
@@ -40,8 +40,9 @@ The 218 input famalies correspond in number to the BAliBASE benchmark reported i
 ```
 3. The BAliBASE data are available in:
 
-   datasets/BAliBASE/
-
+```bash
+   cd datasets/BAliBASE/
+```
 
 
 
