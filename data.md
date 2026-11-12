@@ -28,7 +28,9 @@ The 218 input famalies correspond in number to the BAliBASE benchmark reported i
 
 ```bash
    git clone https://github.com/Singh-Lab/ARIES.git
+```
 
+```bash
    cd ARIES
 ```
 
