@@ -19,7 +19,7 @@ BAliBASE as provided in the ARIES github at the following Git commit:
 
 There are provided 218 input files in datasets/BAliBASE/inputs/ , 218 reference alignment files in datasets/BAliBASE/reference_outputs/ and 386 XML files in datasets/BAliBASE/xml/ .
 
-The 218 input famalies correspond in number to the BAliBASE benchmark reported in the paper. After filtering maxlen <= 1022, 172 famalies remain and 46 families are excluded when running ARIES on default. 
+The 218 input families correspond in number to the BAliBASE benchmark reported in the paper. After filtering maxlen <= 1022, 172 families remain and 46 families are excluded when running ARIES on default. 
 
 
 ## Access Instructions
