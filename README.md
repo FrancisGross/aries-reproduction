@@ -2,44 +2,122 @@
 
 ## Project Description
 
-This project documents the reproduction of selected benchmark results of the paper:<br>   
+This project documents the reproduction of selected benchmark results of the paper:
 
-**»Fast, accurate construction of multiple sequence alignments from protein language embeddings«** <br>
+**»Fast, accurate construction of multiple sequence alignments from protein language
+embeddings«**, Minh Hoang, Isabel Armour-Garb and Mona Singh
 
-The focus is on investigating the paper's claim that the ARIES-Algorithm, developed by the authors, achieves higher alignment accuracy, particularly in the "twilight zone" of very low sequence identity, where traditional methods struggle and degrade.
+Paper version as released on Oct. 1, 2026 in [Genome Reserach](https://genome.cshlp.org/content/early/2026/10/01/gr282254126).
 
-The reproduction target is to reproduce the results for BAliBASE with ARIES vs. ClustalO as shown in
-Appendix D, Figure 8 and Figure 9.
+ARIES is a Multi Sequence Alignment (MSA) algorithm. The authors combine embeddings technology from protein language models (PLM) to construct a windowed reciprocal-weighted embedding similarity metrics. ARIES seems to achieve higher accuracy than existing approaches. The paper claims improvement for datasets with low sequence identity, called the twilight-zone. It also claims to scale well for large numbers of sequences.
 
-Figure 8 reports the Sum-of-Pairs (SP) score as defined in Appendix C equation (6) and
-Benjamini-Hochberg-corrected p-value of one-sided Wilcoxon signed-rank test.
 
-Figure 9 reports the Total-Column (TC) score as defined in Appendix C equation (7) and
-Benjamini-Hochberg-corrected p-value of one-sided Wilcoxon signed-rank test.
+### Reproduction target
 
-The BAliBASE dataset was selected because the paper reports in section 2.5 that BAliBASE is
-a challenging benchmark that also includes protein families with low sequence identity. Additionally, the paper reports in section 3.2 that ARIES outperforms state-of-the-art MSA methods
-on the BAliBASE benchmark and the authors state that "ARIES performs particularly well in
-this “twilight zone” of very low sequence identity" (section 3.2).
+Focus of this reproduction project is the performance of the **ARIES** framework, as provided in the [ARIES GitHub](https://github.com/Singh-Lab/ARIES), against the **MUSCLE** MSA algorithm on the **BAliBASE 3.0** dataset. More on BAliBASE you can find [here](data.md). Primary evaluation metric as defined in the paper in Appendix C, is the Sum-of-Pairs (SP) score which is subject of this reproduction.
 
-The ClustalO (Clustal Omega) MSA algorithm was selected due to its integration as a baseline
-in the ARIES framework. It is also an established MSA method.
+<br>![Fig. 3 - ARIES performance](<documentation/images/Screenshot 2026-Oct_paper_repro ARIES outperforms.jpg>)
 
-SP and TC scores indicate whether ARIES achieves higher alignment accuracy than ClustalO.
+*Source: Screenshot from Fig. 3 in the assigned paper (Hoang et al., 2026), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*
 
-The data points in the volcano plots (Fig. 8 and Fig. 9) are colored by mean sequence identity.
-This allows an investigation of whether ARIES performs better than ClustalO on protein fami-
-lies with low sequence identity.
+**Numerical Reproduction:** Investigation of the paper's claim that ARIES outperforms the MUSCLE algorithm, the best performing algorithm on [BAliBASE 3.0](data.md) dataset in subset RV11 (low sequence identity). Primary target is to reproduce the SP score advantage of ARIES in subset RV11. Secondary target is to reproduce the SP score advantage in BAliBASE over all alignments.
 
-The PLM ESM-2 with 650M parameter was selected for generating sequence embeddings. This
-follows the configuration used for the main ARIES benchmark results in the paper, reported in
-section 2.5.
+
+
+
+   Numerical Reference Results (BAliBASE 3.0)
+
+| Dataset | ARIES Mean SP | MUSCLE Mean SP | ARIES advantage (ΔSP) |
+|---|---:|---:|---:|
+| BAliBASE (all 218 alignments) | 0.88 | 0.87 | ≈ +0.01 |
+| RV11 (38 alignments) | 0.790 | 0.685 | +0.105 |
+
+*Source: Based on Hoang et al. (2026), Figure 3b and Appendix E, Table S2.*
+
+
+
+<u>Numerical Criteria of Success:</u>
+
+  - Primary Target: ARIES Advantage on BAliBASE RV11
+
+    Numerical success is achieved if the reproduced mean SP scores differ by no more than ±0.03 absolute SP points.
+
+  - Secondary Target: ARIES Advantage on Overall BAliBASE (Figure 3b)
+
+    Numerical success is achieved if the reproduced mean SP scores differ by no more than ±0.03 absolute SP points.
+
+  
+<br>**Scientific Conclusion:**
+
+Investigation whether the reproduction supports the paper's claim that ARIES outperforms MUSCLE in terms of SP score.
+- Primary Hypothesis (BAliBASE RV11):
+
+  H<sub>0</sub> : ARIES does not achieve a higher mean SP score than MUSCLE on the BAliBASE RV11 subset
+  
+  H<sub>1</sub> : ARIES achieves a higher mean SP score than MUSCLE on the BAliBASE RV11 subset.
+  
+
+- Secondary Hypothesis (Overall BAliBASE):
+
+  H<sub>0</sub> : ARIES does not achieve a higher mean SP score than MUSCLE across all 218 BAliBASE alignments.
+
+  
+  H<sub>1</sub> : ARIES achieves a higher mean SP score than MUSCLE across all 218 BAliBASE alignments.
+
+<u>Criteria of Scientific Support:</u>
+
+The paper's claim is considered supported if ARIES achieves a higher reproduced mean SP score than MUSCLE (ΔSP > 0) and the advantage is statistically significant.
+
+Statistical significance is assessed using a one-sided paired Wilcoxon signed-rank test, with a significance level of α = 0.05.
+
+
+ ### ARIES Software Installation and Hardware Specifications
+
+Installation intsructions and hardware requirements, ARIES python Scripts, datasets, CLI commands for running ARIES, default parameter settings and furhter information is available on the [ARIES GitHub](https://github.com/Singh-Lab/ARIES). 
+
+<u>Reproduction Settings</u>:
+
+For reproduction the **environment.yml** of the official ARIES GitHub is activated. It is also available on this repository. For running the ARIES software the parameter settings reported in the paper are used.
+
+
+ **Main Parameter Settings for Reproduction**
+
+| Parameter | Setting | Description |
+|---|---|---|
+| PLM | ESM-2 (650M parameters) | Pretrained transformer model |
+| embedding layers | last ℓ = 9 layers  | Layers used for concatinating residue representations |
+| window span (w) | 9 | Window size for alignment scoring |
+|reciprocal weight (λ) | 400 | Gap penalty parameter |
+| star alignment template | top ⌈ln N ⌉ medoids | Number of selected template sequences for N input sequences |
+| ong-sequence handling | tiling for sequences > 1022 residues | Enables processing sequences exceeding the model's input limit |
+| MUSCLE 5.1 settings | default parameters | Baseline alignment algorithm |
+| benchmark dataset | BAliBASE 3.0 | 218 reference alignments |
+| primary subset | RV11 | 38 reference alignments |
+| evaluation metric | SP score | evaluated against reference data |
+
+<br>A GitHub clone of the ARIES repository is used. The currently available scripts and datasets were the foundation for the scientific work of the assigned paper released on Oct. 1, 2026, as the authors confirmed.
+
+
+<br>**Required Hardware Specification for Reproduction**
+
+- Linux workstation
+- CPU: Intel Xeon W3-2435 (16 logical cores)
+- RAM: 64 GB
+- GPU: NVIDIA RTX 4500 Ada (24 GB VRAM)
+- Storage: Shared SSD (up to 400 GB, subject to availability and usage by other users)
+
+<br>**Detailed quickstart instructions for installation and software running is available in [installation.md](installation.md).**
+
 
 ## References
 
-**Assigned paper:** Hoang et al. (2026) - Fast, accurate construction of multiple sequence alignments from protein language embeddings. (https://doi.org/10.64898/2026.01.02.697423) 
+**Assigned paper:** Hoang et al. (2026) – Fast, accurate construction of multiple sequence alignments from protein language embeddings. (https://doi.org/10.1101/gr.282254.126)
 
 **Official ARIES Repository:** Singh-Lab/ARIES on GitHub. (https://github.com/Singh-Lab/ARIES)
+
+**MUSCLE Paper:** Edgar, R. C. (2022). *Muscle5: High-accuracy alignment ensembles enable unbiased assessments of sequence homology and phylogeny.* Nature Communications, 13, 6968. [DOI: 10.1038/s41467-022-34630-w](https://doi.org/10.1038/s41467-022-34630-w)
+
+**MUSCLE Repository:** [https://github.com/rcedgar/muscle/releases/tag/v5.1](https://github.com/rcedgar/muscle/releases/tag/v5.1)
 
 
 
