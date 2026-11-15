@@ -9,15 +9,15 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
 - RAM: 64 GB
 - GPU: NVIDIA RTX 4500 Ada (24 GB VRAM)
 
-## Installation instrucions
+## Installation instructions
 
-1. Open your VPN tunnel to the university network, Campus IT will support you if necessary. Make sure the VPN connection is active before continuing.
+1. Open your VPN tunnel to the university network, Campus IT will support you if necessary, make sure the VPN connection is active before continuing
 2. Conntect to a FIDS remote workstation via SSH
    - open a terminal on your local machine
-   - connect to one of the available FIDS workstations, further information [FIDS](https://fids-admin.git-pages.uni-regensburg.de/fids-it-info/fids-services/cip-pools.html), chose one of the workstation names for SSH, enter your password if required
+   - connect to one of the available FIDS workstations, further information [FIDS](https://fids-admin.git-pages.uni-regensburg.de/fids-it-info/fids-services/cip-pools.html), choose one of the workstation names for SSH, enter your password if required
      
 ```bash
-    ssh your_username@<workstation_name>.ur.de 
+    ssh <your_username>@<workstation_name>.ur.de 
 ``` 
 
 4. Change directory to /loctmp, since storage is low on /home/$USER and check if there is a minimum of 40 GB free to use
@@ -33,15 +33,15 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
 5. Change workstation if available storage is too low, check out storage on the other workstations, enter password when required and change workstation 
 
 ```bash
-    ssh <workstation_name>.ur.de 'df -h /loctmp' -h  /loctmp 
+    ssh <workstation_name>.ur.de 'df -h /loctmp'
 ``` 
 
 ```bash
     exit
-    ssh your_username@<workstation_name>.ur.de 
+    ssh <your_username>@<workstation_name>.ur.de 
 ``` 
 
-6. Create your own directory on the local SSD, $USER contains your username in bash, change directora to user
+6. Create your own directory on the local SSD, $USER contains your username in bash, change directory to user
 
 ```bash
     mkdir -p /loctmp/$USER
@@ -82,13 +82,13 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
    cd ARIES
 ``` 
 
-     to use the same ARIES version as in this reproduction run, use the the git hash
+- to use the same ARIES version as in this reproduction run, use the the git hash
 
 ```bash
    git checkout 891571bd9d2e435d25c98d7694511f954b6866f7
 ``` 
       
-     check the current commit, the output hash should be the same
+- check the current commit, the output hash should be the same
 
 ```bash
    git rev-parse HEAD
@@ -100,7 +100,7 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
    mamba env create -f environment.yml
 ``` 
 
-    activate (ARIES)
+- activate (ARIES)
 
 ```bash
    conda activate ARIES
@@ -117,7 +117,7 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
 ```bash
    python -c "import torch; print(torch.__version__); print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
 ``` 
-    the output for the reproduction installation was:
+- the output for the reproduction installation was:
 
     - 2.6.0+cu124
     - True
@@ -143,13 +143,13 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
    ls -lh
 ```  
 
-    count the generated files, result should 172 files
+- count the generated files, result should 172 files
 
 ```bash
    find . -type f | wc -l
 ```  
 
-    have a look at the first aligned dataset BB11001.fasta
+- have a look at the first aligned dataset BB11001.fasta
 
 ```bash
     cat BB11001.fasta
