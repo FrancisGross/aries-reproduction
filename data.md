@@ -59,4 +59,4 @@ The 218 input families correspond in number to the BAliBASE benchmark reported i
 ```bash
    cd datasets/BAliBASE/
 ```
-4. check also subdirectories
+4. Check also subdirectories

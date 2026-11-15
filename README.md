@@ -20,7 +20,9 @@ Focus of this reproduction project is the performance of the **ARIES** framework
 
 *Source: Screenshot from Fig. 3 in the assigned paper (Hoang et al., 2026), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*
 
-**Numerical Reproduction:** Investigation of the paper's claim that ARIES outperforms the MUSCLE algorithm, the best performing algorithm on [BAliBASE 3.0](data.md) dataset in subset RV11 (low sequence identity). Primary target is to reproduce the SP score advantage of ARIES in subset RV11. Secondary target is to reproduce the SP score advantage in BAliBASE over all alignments.
+<br>**Numerical Reproduction:** 
+
+Investigation of the paper's claim that ARIES outperforms the MUSCLE algorithm, the best performing algorithm on [BAliBASE 3.0](data.md) dataset in subset RV11 (low sequence identity). Primary target is to reproduce the SP score advantage of ARIES in subset RV11. Secondary target is to reproduce the SP score advantage in BAliBASE over all alignments.
 
 
 
@@ -87,9 +89,9 @@ For reproduction the **environment.yml** of the official ARIES GitHub is activat
 | PLM | ESM-2 (650M parameters) | Pretrained transformer model |
 | embedding layers | last ℓ = 9 layers  | Layers used for concatinating residue representations |
 | window span (w) | 9 | Window size for alignment scoring |
-|reciprocal weight (λ) | 400 | Gap penalty parameter |
+|reciprocal weight (λ) | 400 | Controls the strength of reciprocal reinforcement to reward mutually consistent residue correspondences |
 | star alignment template | top ⌈ln N ⌉ medoids | Number of selected template sequences for N input sequences |
-| ong-sequence handling | tiling for sequences > 1022 residues | Enables processing sequences exceeding the model's input limit |
+| long-sequence handling | tiling for sequences > 1022 residues | Enables processing sequences exceeding the model's input limit |
 | MUSCLE 5.1 settings | default parameters | Baseline alignment algorithm |
 | benchmark dataset | BAliBASE 3.0 | 218 reference alignments |
 | primary subset | RV11 | 38 reference alignments |
