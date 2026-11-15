@@ -143,7 +143,7 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
    ls -lh
 ```  
 
-- count the generated files, result should 172 files
+- count the generated files, result should be 172 files
 
 ```bash
    find . -type f | wc -l
