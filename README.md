@@ -7,7 +7,7 @@ This project documents the reproduction of selected benchmark results of the pap
 **»Fast, accurate construction of multiple sequence alignments from protein language
 embeddings«**, Minh Hoang, Isabel Armour-Garb and Mona Singh
 
-Paper version as released on Oct. 1, 2026 in [Genome Reserach](https://genome.cshlp.org/content/early/2026/10/01/gr282254126).
+Paper version as released on Nov. 13, 2026 in [bioRxiv](https://www.biorxiv.org/content/10.64898/2026.01.02.697423v4).
 
 ARIES is a Multi Sequence Alignment (MSA) algorithm. The authors combine embeddings technology from protein language models (PLM) to construct a windowed reciprocal-weighted embedding similarity metrics. ARIES seems to achieve higher accuracy than existing approaches. The paper claims improvement for datasets with low sequence identity, called the twilight-zone. It also claims to scale well for large numbers of sequences.
 
@@ -113,7 +113,7 @@ For reproduction the **environment.yml** of the official ARIES GitHub is activat
 
 ## References
 
-**Assigned paper:** Hoang et al. (2026) – Fast, accurate construction of multiple sequence alignments from protein language embeddings. (https://doi.org/10.1101/gr.282254.126)
+**Assigned paper:** Hoang et al. (2026) – Fast, accurate construction of multiple sequence alignments from protein language embeddings. [bioRxiv](https://www.biorxiv.org/content/10.64898/2026.01.02.697423v4)
 
 **Official ARIES Repository:** Singh-Lab/ARIES on GitHub. (https://github.com/Singh-Lab/ARIES)
 

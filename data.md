@@ -51,7 +51,7 @@ The 218 input families correspond in number to the BAliBASE benchmark reported i
 2. Check out the exact repository version used in this reproduction project with commit hash:
 
 ```bash
-   git checkout 1036dec7db273bd66a95688fd03dde983bc7867b
+   git checkout 891571bd9d2e435d25c98d7694511f954b6866f7
 
 ```
 3. The BAliBASE data are available in:

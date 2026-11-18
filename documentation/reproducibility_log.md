@@ -84,5 +84,10 @@ Appendix D, Figure 8 and Figure 9
 - current setup status is: ARIES installed with all dependencies, test run done on default parameter settings (not the reproduction settings!), output files checked, ready to start with reproduction
 - to do before deadline: create git tag deliverable-2 and submit on GRIPS the github url and the full commit hash corresponding to the tag 
 
+## 18\. Nov 2026
 
-
+- received another email from the authors of the paper: new link to latest paper version released on Nov. 13, 2026 on bioRxiv, this is the recommended paper version and link I should use in my reproduction project
+- update reproduction github: data.md (the commit hash) after changes of the ARIES githu by the ARIES authors, but no changes on BAliBASE dataset
+- update READEME.md on reproduction github: latest link to the released paper from Nov. 13, 2026 as recommended by the ARIES authors
+- check out running MUSCLE on the FIDS workstation for benchmark ARIES vs. MUSCLE
+- update log and commit 
