@@ -29,7 +29,10 @@ Additional information on the dataset structure you can find on the ARIES github
 
 BAliBASE as provided in the ARIES github at the following Git commit:
 
-1036dec7db273bd66a95688fd03dde983bc7867b
+```
+891571bd9d2e435d25c98d7694511f954b6866f7
+```
+
 
 There are provided 218 input files in datasets/BAliBASE/inputs/ , 218 reference alignment files in datasets/BAliBASE/reference_outputs/ and 386 XML files in datasets/BAliBASE/xml/ .
 
