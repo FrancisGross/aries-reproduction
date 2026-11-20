@@ -112,7 +112,7 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
    pip install .
 ``` 
 
-13. Check PyTorch and CUDA - nvidia GPU available
+13. Check [PyTorch](https://docs.pytorch.org/docs/2.15/index.html) and CUDA - nvidia GPU available
 
 ```bash
    python -c "import torch; print(torch.__version__); print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
@@ -122,6 +122,12 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
     - 2.6.0+cu124
     - True
     - NVIDIA RTX 4500 Ada Generation
+    <br> => or for a quick check, type into bash:
+
+```bash
+   nvidia-smi
+```
+
 
 
 14. Prepare the Hugging Face cache for the PLM ESM-2 650M as recommended in the Hugging Face documentation for the /facebook/esm2_t33_650M_UR50D model
