@@ -122,7 +122,8 @@ This guide describes to run ARIES reproduction on a FIDS remote workstation at t
     - 2.6.0+cu124
     - True
     - NVIDIA RTX 4500 Ada Generation
-    <br> => or for a quick check, type into bash:
+    
+    <br>or for a quick check, type into bash:
 
 ```bash
    nvidia-smi
